@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Watch Video</title>
+    <!--Common CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <!--Page Specific CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/videoPlayer.css">
+    <!--Plyr Video Player CSS-->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/demo.css" />
+    <!--File Speicifc JS-->
+    <script type="module" src="../js/helper.js"></script>
+    <script type="module" src="../js/videoPlayer.js"></script>
+</head>
+
+<body>
+
+    <div style="width: 60vw;height:auto" class="plyr__video-embed container_video" id="player">
+        <iframe id="YOUTUBE_IFRAME" allowfullscreen allowtransparency allow=”autoplay”></iframe>
+    </div>
+
+    <button id="BTN_BACK" class="btn_purple">Back</button>
+
+    <!--Plyer Video Player JS-->
+    <script src="https://cdn.plyr.io/3.6.3/demo.js"></script>
+
+</body>
+
+</html>

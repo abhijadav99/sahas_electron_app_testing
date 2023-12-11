@@ -1,0 +1,53 @@
+.container_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2rem;
+}
+
+
+.container_info{
+    padding: 2rem;
+    width: 28rem;
+}
+
+.container_info *{
+    float: right;
+    clear: right;
+}
+
+.logo_sahas{
+    width: 18rem;
+    height: auto;
+}
+
+.edittext{
+    display: block;
+    width: 100%;
+}
+
+.container_credentials{
+    text-align: center;
+    width: 25rem;
+}
+
+.btn_purple{
+    width: 100%;
+}
+
+.btn_pink{
+    width: 100%;
+}
+
+.container_device{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+.error{
+    display: none;
+}
