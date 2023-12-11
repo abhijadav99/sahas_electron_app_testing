@@ -1,9 +1,6 @@
 name: Build and Publish Sahas Desktop App
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
