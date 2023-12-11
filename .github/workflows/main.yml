@@ -1,0 +1,36 @@
+name: Build and Publish Sahas Desktop App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: |
+        npm ci
+      working-directory: https://github.com/abhijadav99/sahas_electron_app_testing
+
+    - name: Build Electron app
+      run: |
+        npm run build
+      working-directory: https://github.com/abhijadav99/sahas_electron_app_testing
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Auto-generated commit by GitHub Action"
+        git push
