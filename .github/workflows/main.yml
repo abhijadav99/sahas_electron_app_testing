@@ -14,16 +14,10 @@ jobs:
       name: Install dependencies
 
     - run: npm install electron-builder
-      name: Build Electron app
+      name: Install electron builder app
 
     - run: npm run build
       name: Build Electron app
 
-    - run: 
-       git config --local user.email "abhijadav99@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Auto-generated commit by GitHub Action"
-        git push
-      name: Commit and push changes
+
 
