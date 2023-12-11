@@ -16,7 +16,7 @@ jobs:
 
     - run: npm run build
       name: Build Electron app
-      working-directory: https://github.com/abhijadav99/sahas_electron_app_testing
+
     - run: 
        git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
