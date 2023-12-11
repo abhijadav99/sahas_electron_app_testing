@@ -1,0 +1,23 @@
+name: Build and Publish Sahas Desktop App
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout repository
+
+    - run: npm install
+      name: Install dependencies
+
+    - run: npm install electron-builder
+      name: Install electron builder app
+
+    - run: npm run build
+      name: Build Electron app
+
+
+
