@@ -7,37 +7,32 @@
     "start": "npm install && electron .",
     "build": "npm install && electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-linux": "electron-packager . sahas --appname=Sahas --platform=linux --arch=x64 --icon=./assets/img/sahas.png --overwrite --out dist/linux",
     "package-win": "electron-packager . sahas --appname=Sahas --platform=win32 --arch=x86_64 --icon=./assets/img/sahas.png --overwrite --out dist/win"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rocketstriker999/electron_Sahas.git"
+    "url": "git+https://github.com/abhijadav99/sahas_electron_app_testing.git"
   },
   "keywords": [
     "Sahas"
   ],
   "build": {
     "productName": "Sahas",
-    "appId":"com.hammerbyte.sahas",
+    "appId":"com.AJ.sahas",
     "directories": {
       "output": "builds/"
     },
     "win": {
       "icon": "./assets/img/sahas.png"
-    },
-    "linux":{
-      "icon": "./assets/img/sahas.png",
-      "category":"Utility",
-      "target":"deb"
     }
   },
-  "author": "HammerByte",
+  
+  "author": "Abhishek Jadav",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rocketstriker999/electron_Sahas/issues"
+    "url": "https://github.com/abhijadav99/sahas_electron_app_testing/issues"
     },
-  "homepage": "https://github.com/rocketstriker999/electron_Sahas#readme",
+  "homepage": "https://github.com/abhijadav99/sahas_electron_app_testing#readme",
   "devDependencies": {
     "@electron/packager": "^18.0.0",
     "electron-builder": "^24.9.1",
