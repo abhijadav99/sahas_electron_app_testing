@@ -14,12 +14,12 @@ jobs:
       name: Checkout repository
     
 
-    - run: |
+    - run: 
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
       name: Configure Git
 
-    - run: |
+    - run: 
         git add .
         git commit -m "Auto-commit by GitHub Action"
         git push
