@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      name: Checkout repository
+      
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - uses: actions/setup-node@v3
+      name: Set up Node.js      
       with:
         node-version: '14'
 
@@ -22,30 +23,14 @@ jobs:
       run: 
         npm ci
 
-    - name: Build Electron app
-      run: 
-        npm run build
-      working-directory: path/to/your/electron/app
+    - run: npm run build
+      name: Build Electron app
 
-    - name: Commit and push changes
-      run: 
+    - run: 
         git config --local user.email "abhijadav99@github.com"
         git config --local user.name "Abhishek Jadav"
         git add .
         git commit -m "Auto-generated commit by GitHub Action"
         git push
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Deploy to website
-      run: |
-        # Replace this with the commands to publish your Electron app to the website
-        # For example, you might use SCP, FTP, or another method depending on your hosting setup
-        scp -r path/to/your/electron/app/dist user@yourwebsite.com:/path/to/website
-      working-directory: path/to/your/electron/app
+      name: Commit and push changes
+      
