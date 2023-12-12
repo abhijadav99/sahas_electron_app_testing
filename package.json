@@ -23,7 +23,19 @@
       "output": "builds/"
     },
     "win": {
-      "icon": "./assets/img/sahas.png"
+      "icon": "./assets/img/sahas.png",
+      "publish": [
+        "github"
+      ],
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
     }
   },
   
