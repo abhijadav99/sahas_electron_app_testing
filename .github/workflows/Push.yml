@@ -22,7 +22,7 @@ jobs:
 
     - run: 
           echo "@abhijadav99:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{localStorage.getItem(key)}}" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}}" >> .npmrc
 
 
     - run: GH_TOKEN=your_access_token npm run build
