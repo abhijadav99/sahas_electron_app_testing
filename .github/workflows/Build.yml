@@ -1,0 +1,25 @@
+name: Push Updated Code
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push_code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "Auto-commit by GitHub Action"
+        git push
