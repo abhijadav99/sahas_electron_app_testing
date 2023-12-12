@@ -12,14 +12,12 @@ jobs:
       name: Checkout repository
     
 
-    - run: 
-        git config --local user.email "abhijadav99@github.com"
-        git config --local user.name "GitHub Action"
-      name: Configure Git
+    - run: npm install
+      name: Install dependencies
 
-    - run: 
-        git add .
-        git commit -m "Auto-commit by GitHub Action"
-        git push
-      name: Commit and push changes
+    - run: npm install electron-builder
+      name: Install electron builder app
+
+    - run: npm run build
+      name: Build Electron app
 
