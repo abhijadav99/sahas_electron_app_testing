@@ -18,6 +18,6 @@ jobs:
     - run: npm install electron-builder
       name: Install electron builder app
 
-    - run: npm run build
+    - run: GH_TOKEN=your_access_token npm run build
       name: Build Electron app
 
