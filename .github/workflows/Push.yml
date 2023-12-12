@@ -20,11 +20,6 @@ jobs:
     - run: npm install electron-builder
       name: Install electron builder app
 
-    - run: 
-          echo "@abhijadav99:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=win32_c739be5f0478" >> .npmrc
-
-
     - run: GH_TOKEN=your_access_token npm run build
       name: Build Electron app
 
