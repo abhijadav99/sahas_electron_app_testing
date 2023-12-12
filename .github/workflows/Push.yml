@@ -1,9 +1,7 @@
 name: Push Updated Code
 
-on:
-  push:
-    branches:
-      - master
+on: push
+
 
 jobs:
   push_code:
