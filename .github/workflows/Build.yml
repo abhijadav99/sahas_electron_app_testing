@@ -10,16 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      name: Checkout repository
+    
 
-    - name: Configure Git
-      run: |
+    - run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+      name: Configure Git
 
-    - name: Commit and push changes
-      run: |
+    - run: |
         git add .
         git commit -m "Auto-commit by GitHub Action"
         git push
+      name: Commit and push changes
+
