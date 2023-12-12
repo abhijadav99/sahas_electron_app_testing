@@ -10,7 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout repository
-    
+      with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
 
     - run: npm install
       name: Install dependencies
@@ -18,8 +20,9 @@ jobs:
     - run: npm install electron-builder
       name: Install electron builder app
 
-    - run: echo "//npm.pkg.github.com/:_authToken=12345"
-      name: npmrcgen
+    - run: 
+          echo "@username:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN}}" >> .npmrc
 
 
     - run: GH_TOKEN=your_access_token npm run build
