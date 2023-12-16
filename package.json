@@ -26,6 +26,7 @@
       "publish": [
         "github"
       ],
+      "releaseType": "release",
       "target": [
         {
           "target": "nsis",
