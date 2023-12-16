@@ -7,11 +7,10 @@ jobs:
   push_code:
     runs-on: windows-latest
    
- 
+    env:
+        GH_TOKEN: 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
+
     steps:
-      
-    - run: set GH_TOKEN=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
-      name: Set Github Token
 
     - uses: actions/checkout@v2
       name: Checkout repository
