@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-latest
    
     env:
-        GH_TOKEN: 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
+        GH_TOKEN: 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
 
     steps:
 
