@@ -23,7 +23,7 @@
     },
     "publish": {
       "provider": "github",
-      "releaseType": "draft"
+      "releaseType": "release"
     },
     "win": {
       "icon": "./assets/img/sahas.png",
