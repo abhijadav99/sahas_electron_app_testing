@@ -1,17 +1,13 @@
 name: Push Updated Code
 
 on: push
-
-permissions: write-all
         
 jobs:
   push_code:
     runs-on: windows-latest
 
-
-
     env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
 
