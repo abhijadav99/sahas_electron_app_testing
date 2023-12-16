@@ -3,9 +3,11 @@ name: Push Updated Code
 on: push
         
 jobs:
-  push_code:
-    runs-on: windows-latest
 
+  push_code:
+    permissions: write-all
+    runs-on: windows-latest
+    
     env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
