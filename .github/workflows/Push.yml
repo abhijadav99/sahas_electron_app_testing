@@ -20,6 +20,6 @@ jobs:
     - run: npm install electron-builder
       name: Install electron builder app
 
-    - run: GITHUB_TOKEN=your_access_token npm run build
+    - run: npm run build
       name: Build Electron app
 
