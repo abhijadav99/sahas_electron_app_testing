@@ -2,12 +2,7 @@ name: Push Updated Code
 
 on: push
 
-
-jobs:
-  push_code:
-    runs-on: windows-latest
-
-    permissions:
+permissions:
         actions: read|write|none
         checks: read|write|none
         contents: read|write|none
@@ -18,6 +13,11 @@ jobs:
         repository-projects: read|write|none
         security-events: read|write|none
         statuses: read|write|none
+jobs:
+  push_code:
+    runs-on: windows-latest
+
+
 
     env:
         GITHUB_TOKEN: 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
