@@ -15,12 +15,15 @@
   "keywords": [
     "Sahas"
   ],
-  "build": {
-    
+  "build": {    
     "productName": "Sahas",
     "appId":"com.AJ.sahas",
     "directories": {
       "output": "builds/"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
     },
     "win": {
       "icon": "./assets/img/sahas.png",
