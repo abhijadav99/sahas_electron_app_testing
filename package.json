@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm install && electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm install && electron-builder build --win --publish always"
+    "deploy": "npm install && electron-builder build --win -p always"
     },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "Sahas"
   ],
   "build": {
+    
     "productName": "Sahas",
     "appId":"com.AJ.sahas",
     "directories": {
