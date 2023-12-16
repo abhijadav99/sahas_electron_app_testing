@@ -1,6 +1,6 @@
 {
   "name": "electron_sahas",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "This is Windows app For Sahas",
   "main": "app.js",
   "scripts": {
@@ -22,8 +22,7 @@
       "output": "builds/"
     },
     "publish": {
-      "provider": "github",
-      "releaseType": "release"
+      "provider": "github"
     },
     "win": {
       "icon": "./assets/img/sahas.png",
