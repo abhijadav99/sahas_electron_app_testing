@@ -16,24 +16,6 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-    - uses: softprops/action-gh-release@v1
-      with:
-        tag_name: v1.4.0
-        prerelease: true
-      name: Release
-
-    - uses: ame-yu/action-delete-latest-release@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: $ {{ github.repository }}
-      name: Delete
-
-    - uses: softprops/action-gh-release@v1
-      with:
-        name: v1.4.0
-        tag_name: v1.4.0
-        prerelease: true
-
     - run: npm run deploy
       name: Build Electron app
 
