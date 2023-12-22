@@ -1,10 +1,10 @@
-name: Push & Deploy Updated Code
+name: Deploy Code
 
 on: push
         
 jobs:
 
-  push_code:
+  deploy:
     permissions: write-all
     runs-on: windows-latest
     
@@ -16,9 +16,6 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-    - run: npm run deploy
-      name: Build Electron app
-       
     - run: |
           # Adjust these variables based on your server configuration
           FTP_USER=abhishek
