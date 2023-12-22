@@ -33,7 +33,7 @@ dashBoardHandler.containerTabs.forEach((tab) => {
 
 //Set UserName From Storage Initially
 window.electron.getCurrentUser((currentUser) => {
-    dashBoardHandler.userName.innerHTML = `Welcome ${currentUser.user_name}`;
+    dashBoardHandler.userName.innerHTML = `Welcome to sahas ${currentUser.user_name}`;
     dashBoardHandler.loggedInUserEmail = currentUser.user_email
 });
 
