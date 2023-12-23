@@ -20,9 +20,11 @@ jobs:
       id: check-tag
       with: 
           tag: 'v1.4.0'
+      name: Check Tag Exist action
 
     - run: echo "Tag exists!"
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
+      name: Tag is exist or not
 
     - run: npm run deploy
       name: Build Electron app
