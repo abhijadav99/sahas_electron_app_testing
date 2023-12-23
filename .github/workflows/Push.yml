@@ -22,7 +22,7 @@ jobs:
     - name: Check for Tag
       run: |
           TAG="v1.4.0"
-          if [git rev-parse "$TAG" >/dev/null 2>&1]; then
+          if (git rev-parse "$TAG" >/dev/null 2>&1); then
                   echo "tag exists";
                 else
                   echo "tag does not exist"
