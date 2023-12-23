@@ -22,11 +22,11 @@ jobs:
     - name: Check for Tag
       run: |
           TAG="v1.4.0"
-          if git show-ref --tags --verify --quiet "refs/tags/${TAG}"; then
-            echo "Tag ${TAG} exists"
-          else
-            echo "Tag ${TAG} does not exist"
-          fi
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+                  echo "tag exists";
+                else
+                  echo "tag does not exist"
+                fi
               "https://uploads.github.com/repos/${{ github.repository }}/releases/${RELEASE_ID}/assets?name=$(basename $file)"
           done
 
