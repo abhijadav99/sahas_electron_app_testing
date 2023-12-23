@@ -23,17 +23,6 @@ jobs:
 
     - run: echo "Tag exists!"
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
-        
-    - name: Check for Tag
-      run: |
-          TAG="v1.4.0"
-          if: ${{ git rev-parse "$TAG" >/dev/null 2>&1; }} then
-                  echo "tag exists";
-                else
-                  echo "tag does not exist"
-                fi
-              "https://uploads.github.com/repos/${{ github.repository }}/releases/${RELEASE_ID}/assets?name=$(basename $file)"
-          done
 
     - run: npm run deploy
       name: Build Electron app
