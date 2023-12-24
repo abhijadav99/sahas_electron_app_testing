@@ -19,22 +19,26 @@ jobs:
     - uses: mukunku/tag-exists-action@v1.5.0
       id: check-tag
       with: 
-          tag: 'v1.4.1'
+          tag: 'v1.4.0'
       name: Check Tag Exist action
 
     - run: echo "Tag exists!"
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
       name: Tag is exist or not
 
-    - name: Check file existence
-      id: check_files
-      uses: andstor/file-existence-action@v1
-      with:
-          files: "assets/${{ env.URL }}"
+    - name: Upload release assets
+      run: |
+        TAG_NAME="v1.4.0"  # Specify the draft release tag
 
-    - name: File exists
-      if: steps.check_files.outputs.files_exists == 'true'
-      run: echo "It exists !"
+        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME" | jq -r '.id')
+
+        if [ -n "$RELEASE_ID" ]; then
+          echo "Updating draft release assets for $TAG_NAME"
+          UPLOAD_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.upload_url' | cut -d'{' -f1)
+        
+        else
+          echo "Draft release $TAG_NAME not found"
+        fi
 
     - run: npm run deploy
       name: Build Electron app
