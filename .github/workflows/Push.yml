@@ -40,6 +40,43 @@ jobs:
         RELEASE_ID=${{ steps.find-release.outputs.release_id }}
         curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.[].name'
 
+    - name: Upload New Assets
+      run: |
+        RELEASE_ID=${{ steps.find-release.outputs.release_id }}
+        ASSET_FOLDER="path/to/new/assets"  # Specify the folder containing new assets
+
+        for FILE_PATH in $ASSET_FOLDER/*; do
+          ASSET_NAME=$(basename "$FILE_PATH")
+          if grep -q "$ASSET_NAME" <<< "${{ steps.list-assets.outputs.stdout }}"; then
+            echo "Updating asset: $ASSET_NAME"
+            curl -X "DELETE" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/assets/$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r --arg ASSET_NAME "$ASSET_NAME" '.[] | select(.name == $ASSET_NAME) | .id')"
+          else
+            echo "Uploading new asset: $ASSET_NAME"
+          fi
+
+          UPLOAD_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.upload_url' | cut -d'{' -f1)
+
+          curl \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: $(file -b --mime-type $FILE_PATH)" \
+            --data-binary @"$FILE_PATH" \
+            "$UPLOAD_URL?name=$ASSET_NAME"
+        done
+
+    - name: Find Release ID
+      id: find-releases
+      run: |
+        TAG_NAME="v1.4.0"  # Specify the release tag
+        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME" | jq -r '.id')
+        echo "Release ID: $RELEASE_ID"
+        echo "::set-output name=release_id::$RELEASE_ID"
+
+    - name: List Existing Assets
+      id: list-assetss
+      run: |
+        RELEASE_ID=${{ steps.find-release.outputs.release_id }}
+        curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.[].name'
+
 
     - run: npm run deploy
       name: Build Electron app
