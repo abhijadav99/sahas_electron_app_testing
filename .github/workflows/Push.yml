@@ -28,9 +28,9 @@ jobs:
 
     - name: Upload release assets
       run: |
-        TAG_NAME="v1.4.0"  # Specify the draft release tag
+        tag: 'v1.4.0'
 
-        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME" | jq -r '.id')
+        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$tag" | jq -r '.id')
 
           echo "Updating draft release assets for $TAG_NAME"
           UPLOAD_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.upload_url' | cut -d'{' -f1)
