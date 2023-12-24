@@ -26,8 +26,11 @@ jobs:
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
       name: Tag is exist or not
 
-    - name: Get Release Asset
-      run: gh release download "v1.4.0" --pattern "Source code.zip"
+    - run: gh release download "v1.4.0" --pattern "sahas_electron_app_testing-1.4.0.zip"
+      name: Get Release Asset
+
+    - run: gh release download "v1.4.0"
+      name: Get Release Assets test
 
     - run: npm run deploy
       name: Build Electron app
