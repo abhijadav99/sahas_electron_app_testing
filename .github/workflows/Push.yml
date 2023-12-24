@@ -28,7 +28,7 @@ jobs:
       id: get-release-id
       name: Get Release ID
 
-    - run:  gh release delete <v1.4.0> [yes]
+    - run:  gh release delete "RE_kwDOK4fQKM4IC_Ny" --yes
       name: Delete Release
 
     - run: npm run deploy
