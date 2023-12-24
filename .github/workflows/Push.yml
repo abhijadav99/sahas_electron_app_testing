@@ -27,11 +27,7 @@ jobs:
       name: Tag is exist or not
 
     - name: Get Release Asset
-      run: |
-        TAG_NAME: 'v1.4.0'  # Specify the release tag
-        ASSET_NAME: "Source code.zip"  # Specify the asset name
-
-        gh release download "$TAG_NAME" --pattern "$ASSET_NAME"
+      run: gh release download "v1.4.0" --pattern "Source code.zip"
 
     - run: npm run deploy
       name: Build Electron app
