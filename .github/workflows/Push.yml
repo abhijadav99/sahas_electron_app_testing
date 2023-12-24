@@ -24,9 +24,8 @@ jobs:
 
 
 
-    - run: |
-        TAG_NAME="v1.0.0"  # Specify the release tag
-        RELEASE_ID=$(gh release view "$TAG_NAME" --json id --template "{{.id}}")
+    - run: 
+        RELEASE_ID=$(gh release view "v1.4.0" --json id --template "{{.id}}")
         echo "::set-output name=release_id::$RELEASE_ID"
       id: get-release-id
       name: Get Release ID
