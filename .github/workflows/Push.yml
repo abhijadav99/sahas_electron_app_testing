@@ -26,16 +26,20 @@ jobs:
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
       name: Tag is exist or not
 
-    - name: Upload release assets
+    - name: Find Release ID
+      id: find-release
       run: |
-        tag: 'v1.4.0'
+        TAG_NAME="v1.4.0"  # Specify the release tag
+        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME" | jq -r '.id')
+        echo "Release ID: $RELEASE_ID"
+        echo "::set-output name=release_id::$RELEASE_ID"
 
-        RELEASE_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/tags/$tag" | jq -r '.id')
+    - name: List Existing Assets
+      id: list-assets
+      run: |
+        RELEASE_ID=${{ steps.find-release.outputs.release_id }}
+        curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.[].name'
 
-          echo "Updating draft release assets for $TAG_NAME"
-          UPLOAD_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" | jq -r '.upload_url' | cut -d'{' -f1)
-
-        fi
 
     - run: npm run deploy
       name: Build Electron app
