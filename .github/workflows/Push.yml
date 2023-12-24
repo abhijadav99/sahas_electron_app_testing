@@ -26,9 +26,6 @@ jobs:
       if: ${{ steps.check-tag.outputs.exists == 'true' }}
       name: Tag is exist or not
 
-    - run: gh release download "v1.4.0" --pattern "sahas_electron_app_testing-1.4.0.zip"
-      name: Get Release Asset
-
     - run: gh release download "v1.4.0"
       name: Get Release Assets test
 
