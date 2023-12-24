@@ -19,32 +19,14 @@ jobs:
     - run: npm run deploy
       name: Build Electron app
 
+    - name: List output files
+      run: ls
+
     - name: Achieve Poduction Articafts
       uses: actions/upload-artifact@main
       with: 
           name: dist
           path: dist
 
-  deploy: 
-      name: Deploy
-      needs: build
-      runs-on: windows-latest
-    
-      steps:
-      - uses: actions/checkout@v2
-        name: Checkout repository
-
-      - name: Achieve Poduction Articafts
-        uses: actions/upload-artifact@main
-        with: 
-           name: dist
-           path: dist
-
-      - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Actions@4.0.0
-        with: 
-           server: dist
-           username: dist
-           password: h
 
 
