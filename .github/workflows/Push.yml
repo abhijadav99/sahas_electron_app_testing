@@ -28,9 +28,7 @@ jobs:
       id: get-release-id
       name: Get Release ID
 
-    - run: |
-        RELEASE_ID=${{ steps.get-release-id.outputs.release_id }}
-        gh release delete "$RELEASE_ID" --yes
+    - run: gh release delete "gh release view "v1.4.0" --json id --template "{{.id}}"" --yes
       name: Delete Release
 
     - run: npm run deploy
