@@ -28,13 +28,13 @@ jobs:
     - run: ftp
       name: Starting FTP communication
 
-    - run: open ${{ secrets.FTP_SERVER }}
+    - run: open ftp.sahasinstitute.com
       name: Opening FTP communication
 
-    - run: ${{ secrets.FTP_USERNAME }}
+    - run: u496732460.HToru
       name: Sending Username
 
-    - run: ${{ secrets.FTP_PASSWORD }}
+    - run: kDDYWRsDE1umBNv
       name: Sending Password
 
     - run: binary
