@@ -21,6 +21,10 @@ jobs:
 
     - name: List output files
       run: ls
+    - name: Download Release Asset
+      run: |
+        gh release download <1.6.0> --pattern "Sahas-Setup-1.6.0.exe"
+        mv Sahas-Setup-1.6.0.exe $GITHUB_WORKSPACE/Sahas-Setup-1.6.0.exe
 
     - name: Achieve Poduction Articafts
       uses: actions/upload-artifact@main
