@@ -31,8 +31,14 @@ jobs:
     - run: open ${{ secrets.FTP_SERVER }}
       name: Opening FTP communication
 
-    - run: User ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }}
-      name: Sending Credentials
+    - run: ${{ secrets.FTP_USERNAME }}
+      name: Sending Username
+
+    - run: ${{ secrets.FTP_PASSWORD }}
+      name: Sending Password
+
+    - run: binary
+      name: Setting the mode
 
     - run: send sahas.zip
       name: Sending Files
