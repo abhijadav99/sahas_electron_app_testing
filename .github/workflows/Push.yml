@@ -31,7 +31,7 @@ jobs:
     - run: open ftp.sahasinstitute.com
       name: Opening FTP communication
 
-    - run: echo "ftp"
+    - run: echo 'ftp'
       name: Echo
 
     - run: u496732460.HToru
