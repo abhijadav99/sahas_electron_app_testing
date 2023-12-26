@@ -25,6 +25,19 @@ jobs:
     - name: List output files
       run: ls
 
+    - run: ftp
+      name: Starting FTP communication
 
+    - run: open ${{ secrets.FTP_SERVER }}
+      name: Opening FTP communication
 
+    - run: user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }}
+      name: Sending Credentials
 
+    - run: send sahas.zip
+      name: Sending Files
+
+    - run: disconnect
+      name: Disconnecting FTP
+
+ 
