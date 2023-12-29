@@ -28,6 +28,12 @@ jobs:
     - name: List output files
       run: ls
 
+    - name: Install lftp
+      run: sudo apt-get install lftp -y
+
+    - name: Deploy to FTP
+      run: lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "mirror --reverse --delete-first -X .git/ -X .github/ -X .gitignore -X README.md -X .gitattributes . $FTP_DESTINATION_DIRECTORY" $FTP_HOST
+
     - run: ftp
       name: Starting FTP communication
 
