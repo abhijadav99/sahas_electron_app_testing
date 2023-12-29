@@ -28,6 +28,14 @@ jobs:
     - name: List output files
       run: ls
 
+    - name: FTP Deploy
+      run: 
+        echo "open $FTP_HOST" > ftp_commands.txt
+        echo "user $FTP_USERNAME $FTP_PASSWORD" >> ftp_commands.txt
+        echo "cd $FTP_DESTINATION_DIRECTORY" >> ftp_commands.txt
+        echo "put sahas.zip" >> ftp_commands.txt
+        echo "bye" >> ftp_commands.txt
+
     - run: ftp
       name: Starting FTP communication
 
