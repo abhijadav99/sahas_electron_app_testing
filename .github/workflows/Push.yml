@@ -23,7 +23,7 @@ jobs:
       name: Zipping App
 
     - name: Create bat file
-      run: echo "@echo off\necho Running builds/*.exe\n*.exe" > run_executable.bat
+      run: echo "@echo off\necho Running builds/*.exe\n*.exe" > sahas.bat
 
     - name: List output files
       run: ls
