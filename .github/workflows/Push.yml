@@ -21,7 +21,10 @@ jobs:
 
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
- 
+
+    - name: Create bat file
+      run: echo "@echo off\necho Running builds/*.exe\n*.exe" > run_executable.bat
+
     - name: List output files
       run: ls
 
