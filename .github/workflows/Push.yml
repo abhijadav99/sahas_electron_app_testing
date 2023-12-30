@@ -16,24 +16,8 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-
     - run : ls
       name: testing
-
-    - name: FTP Deploy
-      run: |
-           echo "open ftp.sahasinstitute.com" > ftp_commands.txt
-           echo "u496732460.HToru" >> ftp_commands.txt
-           echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
-           echo "binary" >> ftp_commands.txt
-           echo "ls" >> ftp_commands.txt
-           echo "bye" >> ftp_commands.txt    
-
-    - run: ls
-      name: test ls 
-
-    - run: ftp -s:ftp_commands.txt
-      name: test
 
     - run: npm run deploy
       name: Build Electron app
@@ -41,5 +25,18 @@ jobs:
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
+    - name: FTP Deploy
+      run: |
+           echo "open ftp.sahasinstitute.com" > ftp_commands.txt
+           echo "u496732460.HToru" >> ftp_commands.txt
+           echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
+           echo "binary" >> ftp_commands.txt
+           echo "put sahas.zip" >> ftp_commands.txt
+           echo "ls" >> ftp_commands.txt
+           echo "bye" >> ftp_commands.txt
+           ftp -s:ftp_commands.txt  
+
     - name: List output files
       run: ls
+
+
