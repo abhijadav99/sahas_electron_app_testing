@@ -21,12 +21,13 @@ jobs:
       name: testing
 
     - name: FTP Deploy
-      run: echo open ftp.sahasinstitute.com > ftp_commands.txt
-           echo u496732460.HToru>> ftp_commands.txt
-           echo kDDYWRsDE1umBNv>> ftp_commands.txt
-           echo binary>> ftp_commands.txt
-           echo ls>> ftp_commands.txt
-           echo bye>> ftp_commands.txt    
+      run: |
+           echo "open ftp.sahasinstitute.com" > ftp_commands.txt
+           echo "u496732460.HToru" >> ftp_commands.txt
+           echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
+           echo "binary" >> ftp_commands.txt
+           echo "ls" >> ftp_commands.txt
+           echo "bye" >> ftp_commands.txt    
 
     - run: ls
       name: test ls 
