@@ -23,7 +23,7 @@ jobs:
       name: testing
 
     - name: FTP Deploy
-      run: echo open ftp.sahasinstitute.com> ftp_commands.txt      
+      run: echo open ftp.sahasinstitute.com > ftp_commands.txt      
 
     - run: ls
       name: test ls 
