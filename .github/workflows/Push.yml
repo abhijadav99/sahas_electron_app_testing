@@ -18,7 +18,7 @@ jobs:
 
     - name: FTP Deploy
       run: |
-        echo open ${{secrets.FTP_HOST}} > ftp_commands.txt
+        echo open ftp.sahasinstitute.com > ftp_commands.txt
         echo user ${{secrets.FTP_USERNAME}} ${{secrets.FTP_PASSWORD}} >> ftp_commands.txt
         echo binary >> ftp_commands.txt
         echo dir >> ftp_commands.txt
