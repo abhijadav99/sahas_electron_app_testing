@@ -38,6 +38,7 @@ jobs:
            echo "ls" >> ftp_commands.txt
            echo "bye" >> ftp_commands.txt
            ftp -s:ftp_commands.txt  
+      timeout-minutes: 10
 
     - name: List output files
       run: ls
