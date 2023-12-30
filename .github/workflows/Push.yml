@@ -18,7 +18,7 @@ jobs:
 
     - name: FTP Deploy
       run: |
-        echo open $FTP_HOST > ftp_commands.txt
+        echo open ${{secrets.FTP_HOST}} > ftp_commands.txt
         echo user $FTP_USERNAME $FTP_PASSWORD >> ftp_commands.txt
         echo binary >> ftp_commands.txt
         echo dir >> ftp_commands.txt
