@@ -21,6 +21,7 @@ jobs:
         echo open ftp.sahasinstitute.com > ftp_commands.txt
         echo u496732460.HToru >> ftp_commands.txt
         echo kDDYWRsDE1umBNv >> ftp_commands.txt
+        echo sleep 5 >> ftp_commands.txt
         echo binary >> ftp_commands.txt
         echo dir >> ftp_commands.txt
         echo bye >> ftp_commands.txt
