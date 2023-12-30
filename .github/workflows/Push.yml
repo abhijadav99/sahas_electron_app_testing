@@ -16,17 +16,11 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-    - run : ls
-      name: testing
-
     - run: npm run deploy
       name: Build Electron app
 
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
-
-    - name: Wait for File
-      run: Start-Sleep -Seconds 10
 
     - name: FTP Deploy
       run: |
@@ -35,10 +29,8 @@ jobs:
            echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
            echo "binary" >> ftp_commands.txt
            echo "put sahas.zip" >> ftp_commands.txt
-           echo "ls" >> ftp_commands.txt
            echo "bye" >> ftp_commands.txt
            ftp -s:ftp_commands.txt  
-      timeout-minutes: 10
 
     - name: List output files
       run: ls
