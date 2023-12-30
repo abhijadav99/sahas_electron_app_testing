@@ -25,7 +25,8 @@ jobs:
         echo ls>> ftp_commands.txt
         echo bye>> ftp_commands.txt        
 
-    - run: ftp -s:ftp_commands.txt
+    - run: ls
+           ftp -s:ftp_commands.txt
       name: test
 
     - run: npm run deploy
