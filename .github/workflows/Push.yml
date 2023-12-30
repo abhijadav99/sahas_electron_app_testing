@@ -17,7 +17,7 @@ jobs:
       name: Checkout repository
 
     - name: FTP Deploy
-      run: |
+      run: 
         echo open ftp.sahasinstitute.com> ftp_commands.txt
         echo u496732460.HToru>> ftp_commands.txt
         echo kDDYWRsDE1umBNv>> ftp_commands.txt
