@@ -23,8 +23,10 @@ jobs:
         echo kDDYWRsDE1umBNv>> ftp_commands.txt
         echo binary>> ftp_commands.txt
         echo ls>> ftp_commands.txt
-        echo bye>> ftp_commands.txt
-        | ls        
+        echo bye>> ftp_commands.txt       
+
+    - run: ls
+      name: test ls
 
     - run: ftp -s:ftp_commands.txt
       name: test
