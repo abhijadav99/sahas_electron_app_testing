@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-    - run: ls
+    - run: type nul> hello.txt
       name: test ls
 
     - name: FTP Deploy
