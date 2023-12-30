@@ -22,7 +22,7 @@ jobs:
         echo u496732460.HToru>> ftp_commands.txt
         echo kDDYWRsDE1umBNv>> ftp_commands.txt
         echo binary>> ftp_commands.txt
-        echo dir>> ftp_commands.txt
+        echo ls>> ftp_commands.txt
         echo bye>> ftp_commands.txt
         ftp -s:ftp_commands.txt
 
