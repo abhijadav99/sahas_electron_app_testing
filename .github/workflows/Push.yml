@@ -22,42 +22,14 @@ jobs:
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
-    - name: Create bat file
-      run: echo "@echo off\necho Running builds/*.exe\n*.exe" > sahas.bat
-
     - name: List output files
       run: ls
 
     - name: FTP Deploy
-      run: 
-        echo "open $FTP_HOST"
-        echo "user $FTP_USERNAME $FTP_PASSWORD"
-        echo "cd $FTP_DESTINATION_DIRECTORY"
-        echo "put sahas.zip"
-        echo "bye"
+      run: |
+        echo open $FTP_HOST > ftp_commands.txt
+        echo user $FTP_USERNAME $FTP_PASSWORD >> ftp_commands.txt
+        echo binary >> ftp_commands.txt
+        echo bye >> ftp_commands.txt
+        ftp -s:ftp_commands.txt
 
-    - run: ftp
-      name: Starting FTP communication
-
-    - run: open ftp.sahasinstitute.com
-      name: Opening FTP communication
-
-    - run: echo ftp
-      name: Echo
-
-    - run: u496732460.HToru
-      name: Sending Username
-
-    - run: kDDYWRsDE1umBNv
-      name: Sending Password
-
-    - run: binary
-      name: Setting the mode
-
-    - run: send sahas.zip
-      name: Sending Files
-
-    - run: disconnect
-      name: Disconnecting FTP
-
- 
