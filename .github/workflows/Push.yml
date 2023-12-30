@@ -25,6 +25,9 @@ jobs:
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
+    - name: Wait for File
+      run: Start-Sleep -Seconds 10
+
     - name: FTP Deploy
       run: |
            echo "open ftp.sahasinstitute.com" > ftp_commands.txt
