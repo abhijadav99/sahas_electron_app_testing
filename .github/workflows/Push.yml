@@ -24,7 +24,7 @@ jobs:
         echo binary>> ftp_commands.txt
         echo ls>> ftp_commands.txt
         echo bye>> ftp_commands.txt
-        | dir        
+        | ls        
 
     - run: ftp -s:ftp_commands.txt
       name: test
