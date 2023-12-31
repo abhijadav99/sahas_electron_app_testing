@@ -22,15 +22,15 @@ jobs:
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
+
     - name: FTP Deploy
       run: |
            echo "open ftp.sahasinstitute.com" > ftp_commands.txt
            echo "u496732460.HToru" >> ftp_commands.txt
            echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
-           echo "passive" >> ftp_commands.txt
            echo "binary" >> ftp_commands.txt
            echo "put sahas.zip" >> ftp_commands.txt
-           echo "quote site idle_timeout 300" >> ftp_commands.txt
+           echo "dir" >> ftp_commands.txt
            echo "bye" >> ftp_commands.txt
            ftp -s:ftp_commands.txt  
 
