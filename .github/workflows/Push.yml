@@ -29,7 +29,8 @@ jobs:
            echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
            echo "passive" >> ftp_commands.txt
            echo "binary" >> ftp_commands.txt
-           echo "send sahas.zip" >> ftp_commands.txt
+           echo "put sahas.zip" >> ftp_commands.txt
+           echo "quote site idle_timeout 300" >> ftp_commands.txt
            echo "bye" >> ftp_commands.txt
            ftp -s:ftp_commands.txt  
 
