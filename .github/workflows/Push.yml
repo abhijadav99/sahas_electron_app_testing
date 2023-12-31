@@ -13,6 +13,7 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     steps:
+
     - uses: actions/checkout@v2
       name: Checkout repository
 
@@ -22,42 +23,38 @@ jobs:
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
-    - name: Create bat file
-      run: echo "@echo off\necho Running builds/*.exe\n*.exe" > sahas.bat
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+         name: sahas.zip
+         path: sahas.zip
+         retention-days: 5
 
-    - name: List output files
-      run: ls
+  deploy:
+        name: deploy
+        needs: build
+        permissions: write-all
+        runs-on: ubuntu-latest
+        steps:
 
-    - name: FTP Deploy
-      run: 
-        echo "open $FTP_HOST"
-        echo "user $FTP_USERNAME $FTP_PASSWORD"
-        echo "cd $FTP_DESTINATION_DIRECTORY"
-        echo "put sahas.zip"
-        echo "bye"
+            - uses: actions/checkout@v2
+              name: Checkout repository
 
-    - run: ftp
-      name: Starting FTP communication
+            - name: Download math result for job 2
+              uses: actions/download-artifact@v3
+              with:
+                  name: sahas.zip
 
-    - run: open ftp.sahasinstitute.com
-      name: Opening FTP communication
+            - name: FTP Deploy
+              run: echo "ftp -n <<EOF" > ftp.sh;
+                   echo "open ftp.sahasinstitute.com" >> ftp.sh;
+                   echo "user u496732460.HToru kDDYWRsDE1umBNv" >> ftp.sh;
+                   echo "quote pasv" >> ftp.sh;
+                   echo "binary" >> ftp.sh;
+                   echo "put sahas.zip" >> ftp.sh;
+                   echo "EOF" >> ftp.sh;
+                   chmod +x ftp.sh;
+                   ./ftp.sh;                 
 
-    - run: echo ftp
-      name: Echo
+              
 
-    - run: u496732460.HToru
-      name: Sending Username
-
-    - run: kDDYWRsDE1umBNv
-      name: Sending Password
-
-    - run: binary
-      name: Setting the mode
-
-    - run: send sahas.zip
-      name: Sending Files
-
-    - run: disconnect
-      name: Disconnecting FTP
-
- 
