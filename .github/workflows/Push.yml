@@ -13,8 +13,14 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     steps:
+
     - uses: actions/checkout@v2
       name: Checkout repository
+
+    - run: netsh advfirewall firewall add rule name="FTP" dir=in action=allow program=%SystemRoot%\System32\ftp.exe enable=yes protocol=tcp
+      name: tcp
+    - run: netsh advfirewall firewall add rule name="FTP" dir=in action=allow program=%SystemRoot%\System32\ftp.exe enable=yes protocol=udp
+      name: udp
 
     - run: npm run deploy
       name: Build Electron app
