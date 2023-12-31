@@ -17,31 +17,27 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout repository
 
-    - run: netsh advfirewall firewall add rule name="FTP" dir=in action=allow program=%SystemRoot%\System32\ftp.exe enable=yes protocol=tcp
-      name: tcp
-    - run: netsh advfirewall firewall add rule name="FTP" dir=in action=allow program=%SystemRoot%\System32\ftp.exe enable=yes protocol=udp
-      name: udp
-
     - run: npm run deploy
       name: Build Electron app
 
     - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
       name: Zipping App
 
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+         name: sahas.zip
+         path: sahas.zip
+         retention-days: 5
 
-    - name: FTP Deploy
-      run: |
-           echo "open ftp.sahasinstitute.com" > ftp_commands.txt
-           echo "u496732460.HToru" >> ftp_commands.txt
-           echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
-           echo "quote pasv" >> ftp_commands.txt
-           echo "binary" >> ftp_commands.txt
-           echo "put sahas.zip" >> ftp_commands.txt
-           echo "dir" >> ftp_commands.txt
-           echo "bye" >> ftp_commands.txt
-           ftp -s:ftp_commands.txt  
+  deploy:
+        name: deploy
+        permissions: write-all
+        runs-on: ubuntu-latest
+        steps:
 
-    - name: List output files
-      run: ls
-
+            - uses: actions/checkout@v2
+              name: Checkout repository
+            - name: List output files
+              run: ls
 
