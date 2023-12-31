@@ -1,54 +1,46 @@
 {
   "name": "electron_sahas",
-  "version": "1.6.0",
+  "version": "1.2.0",
   "description": "This is Windows app For Sahas",
   "main": "app.js",
   "scripts": {
     "start": "npm install && electron .",
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "deploy": "npm install && electron-builder build --win --publish always"
-    },
+    "build": "npm install && electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-linux": "electron-packager . sahas --appname=Sahas --platform=linux --arch=x64 --icon=./assets/img/sahas.png --overwrite --out dist/linux",
+    "package-win": "electron-packager . sahas --appname=Sahas --platform=win32 --arch=x86_64 --icon=./assets/img/sahas.png --overwrite --out dist/win"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abhijadav99/sahas_electron_app_testing.git"
+    "url": "git+https://github.com/rocketstriker999/electron_Sahas.git"
   },
   "keywords": [
     "Sahas"
   ],
-  "build": {    
+  "build": {
     "productName": "Sahas",
-    "appId":"com.AJ.sahas",
+    "appId":"com.hammerbyte.sahas",
     "directories": {
       "output": "builds/"
     },
-    "publish": {
-      "provider": "github"
-    },
     "win": {
+      "icon": "./assets/img/sahas.png"
+    },
+    "linux":{
       "icon": "./assets/img/sahas.png",
-      "publish": [
-        "github"
-      ],
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
+      "category":"Utility",
+      "target":"deb"
     }
   },
-  
-  "author": "Abhishek Jadav",
+  "author": "HammerByte",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/abhijadav99/sahas_electron_app_testing/issues"
+    "url": "https://github.com/rocketstriker999/electron_Sahas/issues"
     },
-  "homepage": "https://github.com/abhijadav99/sahas_electron_app_testing#readme",
+  "homepage": "https://github.com/rocketstriker999/electron_Sahas#readme",
   "devDependencies": {
-    "electron-builder": "^22.14.5",
+    "@electron/packager": "^18.0.0",
+    "electron-builder": "^24.9.1",
     "electron": "^27.1.0"
   }
 }
