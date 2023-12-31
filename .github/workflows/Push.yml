@@ -46,13 +46,12 @@ jobs:
                   name: sahas.zip
 
             - name: FTP Deploy
-              run: echo "open ftp.sahasinstitute.com" > ftp.sh;
+              run: echo "ftp -n <<EOF" > ftp.sh;
+                   echo "open ftp.sahasinstitute.com" >> ftp.sh;
                    echo "user u496732460.HToru kDDYWRsDE1umBNv" >> ftp.sh;
                    echo "put sahas.zip" >> ftp.sh;
                    chmod +x ftp.sh;
-                   ./ftp.sh;
-
-                   
+                   ./ftp.sh;                 
 
               
 
