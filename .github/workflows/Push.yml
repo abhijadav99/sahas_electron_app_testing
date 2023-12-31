@@ -28,7 +28,7 @@ jobs:
            echo "u496732460.HToru" >> ftp_commands.txt
            echo "kDDYWRsDE1umBNv" >> ftp_commands.txt
            echo "binary" >> ftp_commands.txt
-           echo "put sahas.zip" >> ftp_commands.txt
+           echo "send sahas.zip" >> ftp_commands.txt
            echo "bye" >> ftp_commands.txt
            ftp -s:ftp_commands.txt  
 
