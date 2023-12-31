@@ -44,6 +44,12 @@ jobs:
               uses: actions/download-artifact@v3
               with:
                   name: sahas.zip
+
             - name: Print the final result
-              run: ls
+              run: ftp -n <<EOF
+                   open ftp.sahasinstitute.com
+                   user u496732460.HToru kDDYWRsDE1umBNv
+                   put sahas.zip
+
+              
 
