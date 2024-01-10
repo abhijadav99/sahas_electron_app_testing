@@ -55,7 +55,7 @@ jobs:
                    echo "quote pasv" >> ftp.sh;
                    echo "binary" >> ftp.sh;
                    echo "put *.exe" >> ftp.sh;
-                   echo "put *.yml" >> ftp.sh;
+                   echo "put latest.yml" >> ftp.sh;
                    echo "EOF" >> ftp.sh;
                    chmod +x ftp.sh;
                    ./ftp.sh;                 
