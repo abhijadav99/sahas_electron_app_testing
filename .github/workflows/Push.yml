@@ -54,7 +54,10 @@ jobs:
                    echo "user u496732460.HToru kDDYWRsDE1umBNv" >> ftp.sh;
                    echo "quote pasv" >> ftp.sh;
                    echo "binary" >> ftp.sh;
-                   echo "mput *" >> ftp.sh;
+                   echo "put *.exe" >> ftp.sh;
+                   echo "put latest.yml" >> ftp.sh;
+                   echo "put *.blockmap" >> ftp.sh;
+                   echo "mput * -y" >> ftp.sh;
                    echo "EOF" >> ftp.sh;
                    chmod +x ftp.sh;
                    ./ftp.sh;                 
