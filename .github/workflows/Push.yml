@@ -20,7 +20,7 @@ jobs:
     - run: npm run build
       name: Build Electron app
 
-    - run: Compress-Archive -Path builds/*.exe -Destination sahas.zip
+    - run: Compress-Archive -Path builds/*.* -Destination sahas.zip
       name: Zipping App
 
     - name: 'Upload Artifact'
@@ -52,6 +52,7 @@ jobs:
                    echo "quote pasv" >> ftp.sh;
                    echo "binary" >> ftp.sh;
                    echo "put sahas.zip" >> ftp.sh;
+                   echo "unzip sahas.zip" >> ftp.sh;
                    echo "EOF" >> ftp.sh;
                    chmod +x ftp.sh;
                    ./ftp.sh;                 
